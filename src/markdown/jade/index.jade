@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title hoge
+
+  body
+    div#editor
+      textare(v-model="input")
+      div(v-html="input | marked")
+
+    script(src="/lib/vue/vue.js")
+    script(src="/markdown/js/app.js")
