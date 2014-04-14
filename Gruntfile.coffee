@@ -6,6 +6,7 @@ module.exports = (grunt) ->
       dest: "dist"
       jade: "jade"
       coffee: "coffee"
+      stylus: "stylus"
       js: "js"
     pkg: grunt.file.readJSON "package.json"
 
@@ -28,6 +29,15 @@ module.exports = (grunt) ->
         dest: '<%= dir.dest %>/markdown/'
         ext: '.html'
 
+    stylus:
+      markdown:
+        expand: true
+        cwd: '<%= dir.src %>/markdown/<%= dir.stylus %>' 
+        src: '**/*.styl'
+        dest: '<%= dir.dest %>/markdown/css'
+        ext: '.css'
+
+
     coffee:
       options:
         bare: true
@@ -45,6 +55,9 @@ module.exports = (grunt) ->
       coffee:
         files: ['<%= dir.src %>/markdown/**/**/*.coffee','<%= dir.src %>/markdown/**/*.coffee']
         tasks: 'coffee:markdown'
+      stylus:
+        files: '<%= dir.src %>/markdown/**/*.styl'
+        tasks: 'stylus:markdown'
       bower:
         files: 'bower.json',
         tasks: 'bower:install'
@@ -63,5 +76,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-connect"
+  grunt.loadNpmTasks "grunt-contrib-stylus"
 
-  grunt.registerTask 'default', ['bower','jade','coffee','connect','watch']
+  grunt.registerTask 'default', ['bower','jade','coffee','stylus','connect','watch']

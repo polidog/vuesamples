@@ -1,12 +1,14 @@
 doctype html
 html
   head
-    title hoge
+    title markdown
+    link(href="/markdown/css/app.css",rel="stylesheet")
 
   body
     div#editor
-      textare(v-model="input")
+      textarea(v-model="input")
       div(v-html="input | marked")
 
     script(src="/lib/vue/vue.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/marked/0.3.1/marked.min.js")
     script(src="/markdown/js/app.js")
