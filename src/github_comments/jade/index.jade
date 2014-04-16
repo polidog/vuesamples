@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title markdown
+    link(href="/github_comments/css/app.css",rel="stylesheet")
+
+  body
+    div#demo
+      h1 Latest Vue.js Commits
+
+      input#master(type="radio",name="branch",v-model="branch",value="master")
+      label(for="master") master
+
+      input#dev(type="radio", name="branch", v-model="branch", value="dev")
+      label(for="dev") dev
+      ul
+        li(v-repeat="commits")
+          a.comment(href="{{html_url}}",target="_blank") {{sha.slice(0,7)}}
+          span.message {{commit.message | truncate}}
+          br 
+          span.author {{commit.author.name}}
+          span.date {{commit.author.date | formatDate}}
+
+    script(src="/lib/vue/vue.js")
+    script(src="/github_comments/js/app.js")

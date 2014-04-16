@@ -28,6 +28,14 @@ module.exports = (grunt) ->
         src: '**/*.jade'
         dest: '<%= dir.dest %>/markdown/'
         ext: '.html'
+      github:
+        options:
+          pretty: true
+        expand: true
+        cwd: '<%= dir.src %>/github_comments/<%= dir.jade %>' 
+        src: '**/*.jade'
+        dest: '<%= dir.dest %>/github_comments/'
+        ext: '.html'        
 
     stylus:
       markdown:
@@ -36,7 +44,12 @@ module.exports = (grunt) ->
         src: '**/*.styl'
         dest: '<%= dir.dest %>/markdown/css'
         ext: '.css'
-
+      github:
+        expand: true
+        cwd: '<%= dir.src %>/github_comments/<%= dir.stylus %>' 
+        src: '**/*.styl'
+        dest: '<%= dir.dest %>/github_comments/css'
+        ext: '.css'
 
     coffee:
       options:
@@ -47,17 +60,23 @@ module.exports = (grunt) ->
         src: '**/**/*.coffee'
         dest: '<%= dir.dest %>/markdown/<%= dir.js %>'
         ext: '.js'
+      github:
+        expand: true
+        cwd: '<%= dir.src %>/github_comments/<%= dir.coffee %>'
+        src: '**/**/*.coffee'
+        dest: '<%= dir.dest %>/github_comments/<%= dir.js %>'
+        ext: '.js'
 
     watch:
       jade:
-        files: '<%= dir.src %>/markdown/**/*.jade'
-        tasks: 'jade:markdown'
+        files: '<%= dir.src %>/**/**/*.jade'
+        tasks: ['jade:markdown','jade:github']
       coffee:
-        files: ['<%= dir.src %>/markdown/**/**/*.coffee','<%= dir.src %>/markdown/**/*.coffee']
-        tasks: 'coffee:markdown'
+        files: ['<%= dir.src %>/**/**/**/*.coffee','<%= dir.src %>/**/**/*.coffee']
+        tasks: ['coffee:markdown','coffee:github']
       stylus:
-        files: '<%= dir.src %>/markdown/**/*.styl'
-        tasks: 'stylus:markdown'
+        files: '<%= dir.src %>/**/**/*.styl'
+        tasks: ['stylus:markdown','stylus:github']
       bower:
         files: 'bower.json',
         tasks: 'bower:install'
