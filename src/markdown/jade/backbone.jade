@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title markdown(BackboneJS)
+    title markdown(BackboneJS)
+    link(href="/markdown/css/app.css",rel="stylesheet")
+
+  body
+    div#editor
+      textarea#input
+      div#preview
+
+    script(src="/lib/jquery/jquery.js")
+    script(src="/lib/underscore/underscore.js")
+    script(src="/lib/backbone/backbone.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/marked/0.3.1/marked.min.js")
+    script(src="/markdown/js/backbone_app.js")
+
+  script#list-tpl(type="text/template")

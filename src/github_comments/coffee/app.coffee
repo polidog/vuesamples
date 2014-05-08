@@ -1,4 +1,4 @@
-apiUrl = "https://api.github.com/repos/yyx990803/vue/commits?per_page=3&sha="
+apiUrl = "https://api.github.com/repos/polidog/vuesamples/commits?per_page=3&sha="
 
 demo = new Vue
   el:  '#demo'

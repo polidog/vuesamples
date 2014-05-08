@@ -13,6 +13,9 @@
     "tests"
   ],
   "dependencies": {
-    "vue": "0.10.3"
+    "vue": "0.10.3",
+    "backbone": "~1.1.2",
+    "jquery": "~2.1.1",
+    "backbone.stickit": "~0.8.0"
   }
 }
